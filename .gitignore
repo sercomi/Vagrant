@@ -1,0 +1,15 @@
+# Ignora archivos de sistema
+.DS_Store
+
+# Ignora directorios de compilación
+build
+
+# Ignora archivos temporales y de log
+*.log
+*.tmp
+
+# Ignora bases de datos sqlite
+*.sqlite3
+
+#Ignora vagrant configuration
+.vagrant
