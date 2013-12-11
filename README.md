@@ -1,6 +1,6 @@
 ## Vagrant VM for development
 
-### precise64
+### precise64.apache
 
 - Ubuntu 12.04 LTS 64bits
 - Nginx
@@ -8,11 +8,12 @@
 - Composer
 - MySQL
 
-### precise64.puppet
+### precise64.nginx
 
 - Ubuntu 12.04 LTS 64bits
 - Apache
-- PHP 5.4
+- PHP 5.5
+- Composer
 - MySQL
 
 ## Run VM
