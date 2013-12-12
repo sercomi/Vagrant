@@ -18,7 +18,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     v.customize ["modifyvm", :id, "--name", "precise64-apache"]
   end
 
-  config.vm.synced_folder "../../../Developer/Sites", "/var/www", id: "vagrant-root", owner: "www-data", group: "www-data"
+  config.vm.synced_folder "../../Developer/Sites", "/var/www", id: "vagrant-root", owner: "www-data", group: "www-data"
 
   config.vm.provision :shell, :path => "bootstrap.sh"
 
