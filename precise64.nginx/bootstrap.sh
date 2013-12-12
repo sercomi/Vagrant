@@ -32,6 +32,18 @@ echo "--Configuring PHP"
 sed -i "s/;date.timezone =/date.timezone = UTC/" /etc/php5/cli/php.ini
 sed -i "s/display_errors = Off/display_errors = On/" /etc/php5/cli/php.ini
 
+sed -i "s/;date.timezone =/date.timezone = UTC/" /etc/php5/fpm/php.ini
+sed -i "s/display_errors = Off/display_errors = On/" /etc/php5/fpm/php.ini
+
+echo "--- Installing and configuring Xdebug ---"
+sudo apt-get install -y php5-xdebug
+
+cat << EOF | sudo tee -a /etc/php5/mods-available/xdebug.ini
+xdebug.scream=1
+xdebug.cli_color=1
+xdebug.show_local_vars=1
+EOF
+
 echo "--Installing Git"
 
 sudo apt-get -y install git-core git-flow
