@@ -72,6 +72,7 @@ sudo cp -ru /vagrant/files/nginx /etc
 sudo ln -s /etc/nginx/sites-available/example.com /etc/nginx/sites-enabled/example.com
 
 sudo service nginx restart
+sudo service php5-fpm restart
 
 echo "--Installing Mysql"
 

@@ -25,6 +25,12 @@ sudo apt-get update
 echo "--- Installing PHP-specific packages ---"
 sudo apt-get install -y php5 apache2 libapache2-mod-php5 php5-curl php5-gd php5-mcrypt mysql-server-5.5 php5-mysql git-core php5-json php5-apcu
 
+sed -i "s/;date.timezone =/date.timezone = UTC/" /etc/php5/cli/php.ini
+sed -i "s/display_errors = Off/display_errors = On/" /etc/php5/cli/php.ini
+
+sed -i "s/;date.timezone =/date.timezone = UTC/" /etc/php5/apache2/php.ini
+sed -i "s/display_errors = Off/display_errors = On/" /etc/php5/apache2/php.ini
+
 echo "--- Installing and configuring Xdebug ---"
 sudo apt-get install -y php5-xdebug
 
@@ -42,6 +48,8 @@ sed -i "s/error_reporting = .*/error_reporting = E_ALL/" /etc/php5/apache2/php.i
 sed -i "s/display_errors = .*/display_errors = On/" /etc/php5/apache2/php.ini
 
 sed -i 's/AllowOverride None/AllowOverride All/' /etc/apache2/apache2.conf
+sed -i 's/DocumentRoot \/var\/www/DocumentRoot \/var\/www\/html/' /etc/apache2/sites-available/000-default.conf
+sed -i 's/DocumentRoot \/var\/www/DocumentRoot \/var\/www\/html/' /etc/apache2/sites-available/default-ssl.conf
 
 echo "--- Restarting Apache ---"
 sudo service apache2 restart

@@ -7,6 +7,7 @@ VAGRANTFILE_API_VERSION = "2"
 Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
 
   config.vm.box = "precise64"
+  config.vm.hostname = "precise64.local"
   config.vm.box_url = "http://files.vagrantup.com/precise64.box"
   config.vm.network :private_network, ip: "192.168.56.101"
   config.vm.network :forwarded_port, host: 8080, guest: 80
@@ -18,7 +19,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     v.customize ["modifyvm", :id, "--name", "precise64-nginx"]
   end
 
-  config.vm.synced_folder "../../Developer/Sites", "/var/www", id: "vagrant-root", owner: "www-data", group: "www-data"
+  config.vm.synced_folder "../../../Developer/Sites", "/var/www", id: "vagrant-root", owner: "www-data", group: "www-data"
 
   config.vm.provision :shell, :path => "bootstrap.sh"
 
